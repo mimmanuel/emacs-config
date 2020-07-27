@@ -1,0 +1,41 @@
+#+TITLE: Emacs Config
+#+PROPERTIES: header_args :tangle yes :result silent :exports code
+
+* Initial config
+
+#+begin_src elisp
+  (setq user-full-name "Mathias Nielsen")
+#+end_src
+
+Always use *y* or *n* instead of *yes* and *no*
+#+begin_src elisp
+(defalias 'yes-or-no-p 'y-or-n-p)
+#+end_src
+
+** OSX
+
+#+begin_src elisp
+  (when (eq system-type 'darwin)
+    (setq ns-command-modifier 'meta
+	ns-option-modifier 'super
+	ns-right-option-modifier 'none))
+#+end_src
+
+#+RESULTS:
+: none
+
+* Use Package
+
+* Interface
+** Theme
+
+** Modeline
+
+
+* Completion
+** Ivy
+
+*** Counsel
+
+* Keybindings
+** Evil
