@@ -1,0 +1,8 @@
+#+title: My Emacs Config
+
+This repo contains my literate emacs config
+
+To install use
+#+begin_src sh
+  git clone https://github.com/mimmanuel/emacs-config.git
+#+end_src
