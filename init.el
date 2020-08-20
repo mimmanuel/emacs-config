@@ -25,7 +25,7 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(setq straight-base-dir (expand-file-name ".local/" user-emacs-directory)
+(setq ;; straight-base-dir (expand-file-name ".local/" user-emacs-directory)
       straight-use-package-by-default t)
 
 ;; Setup Use-package
@@ -38,3 +38,24 @@
 (load-file "~/.emacs.d/config.el"))
 
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("c83c095dd01cde64b631fb0fe5980587deec3834dc55144a6e78ff91ebc80b19" default))
+ '(fci-rule-color "#383a42")
+ '(jdee-db-active-breakpoint-face-colors (cons "#f0f0f0" "#4078f2"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#f0f0f0" "#50a14f"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#f0f0f0" "#9ca0a4"))
+ '(objed-cursor-color "#e45649")
+ '(pdf-view-midnight-colors (cons "#383a42" "#fafafa"))
+ '(rustic-ansi-faces
+   ["#fafafa" "#e45649" "#50a14f" "#986801" "#4078f2" "#a626a4" "#0184bc" "#383a42"]))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
