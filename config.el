@@ -84,8 +84,9 @@
   :defer t
   :init
   (setq counsel-describe-function-function #'helpful-callable
-        counsel-describe-variable-function #'helpful-variable)
-  (add-to-list 'evil-goto-definition-functions (lambda (string pt) (helpful-at-point))))
+	counsel-describe-variable-function #'helpful-variable)
+  (with-eval-after-load 'evil
+    (setq evil-lookup-func #'helpful-at-point)))
 
 (use-package ivy
   :defer t
@@ -158,6 +159,30 @@
 
 (use-package general)
 
+
+(defmacro set-leader-keys! (&rest keys)
+  "Set add keys to leader-key"
+ `(general-define-key
+:prefix "SPC"
+ :non-normal-prefix "M-SPC"
+ :states '(normal motion insert replace emacs)
+ :keymaps 'override
+ ,@keys))
+
+(defmacro set-localleader-keys! (map &rest keys)
+  "Set add keys to leader-key"
+ `(general-define-key
+ :prefix "SPC m"
+ :non-normal-prefix "M-SPC m"
+ :states '(normal motion insert replace emacs)
+ :keymaps ,map
+ ,@keys))
+
+(set-leader-keys!
+ "w" '(:ignore t :wk "window")
+ "wd" 'delete-window
+ "wh" 'evil-window-left)
+
 (general-define-key
  :prefix "SPC"
  :non-normal-prefix "M-SPC"
@@ -166,6 +191,25 @@
  "b" '(:ignore t :wk "buffer")
   "bb" 'counsel-switch-buffer
   "bd" 'kill-current-buffer)
+
+(let ((bindings '(("f" "" "files") ("fs" "save-buffer" "") ("ff" "find-file" ""))))
+(let (keys
+        key
+        function
+        wk)
+    (dolist (binding bindings keys)
+      (setq key (car binding))
+      (if (eq (cadr binding) "")
+          (setq function '(:ignore t))
+        (setq function (intern (cadr binding))))
+      (setq wk (nth 2 binding))
+      (unless (or (eq wk nil)
+               (eq wk ""))
+        (setq function (append function `(:wk ,wk)))))
+      (add-to-list 'keys key t)
+      (add-to-list 'keys function t))
+    )
+)
 
 (use-package evil
   :init
