@@ -152,10 +152,11 @@ Hide scroll-bar
 I like to use Ivy
 #+begin_src elisp
   (use-package ivy
-    :defer t
     :init
     ;; Set initial input to nil
-    (setq ivy-initial-inputs-alist nil))
+    (setq ivy-initial-inputs-alist nil)
+    :config
+    (ivy-mode 1))
 #+end_src
 
 
