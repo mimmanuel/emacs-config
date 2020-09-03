@@ -382,3 +382,10 @@ And evil collection to use evil bindings in more modes
 #+end_src
 
 *** Org Mode
+    
+*** Hledger mode
+#+begin_src elisp
+  (use-package hledger-mode
+    :defer t
+    :mode "\\.hledger$")
+#+end_src
