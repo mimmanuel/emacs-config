@@ -89,10 +89,11 @@
     (setq evil-lookup-func #'helpful-at-point)))
 
 (use-package ivy
-  :defer t
   :init
   ;; Set initial input to nil
-  (setq ivy-initial-inputs-alist nil))
+  (setq ivy-initial-inputs-alist nil)
+  :config
+  (ivy-mode 1))
 
 (use-package ivy-rich
     :after ivy counsel
@@ -252,3 +253,7 @@
 
 (use-package text-mode
   :straight (:type built-in))
+
+(use-package hledger-mode
+  :defer t
+  :mode "\\.hledger$")
